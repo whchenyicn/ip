@@ -20,6 +20,6 @@ public class Task {
     }
 
     public String toString() {
-        return desc;
+        return "[" + this.getStatus() + "] " + desc;
     }
 }
