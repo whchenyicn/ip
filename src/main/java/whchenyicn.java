@@ -12,9 +12,26 @@ public class whchenyicn {
         System.out.println(hline);
     }
 
-    private void mark(String s) {
+    private void mark(String s) throws whchenyicnExceptions{
         //mark as done
-        Integer i = Integer.parseInt(s.substring(5).trim());
+
+        if (s.length() <=5) {
+            throw new whchenyicnExceptions("Please provide a task number");
+        }
+
+        if (tcount <= 0 ) {
+            throw new whchenyicnExceptions("list is empty! you cant mark anything");
+        }
+
+        int i;
+        try {
+            i = Integer.parseInt(s.substring(5).trim());
+        } catch (NumberFormatException e) {
+            throw new whchenyicnExceptions("Index must be a number");
+        }
+        if (i < 1 || i > tcount) {
+            throw new whchenyicnExceptions("Invalid Index, please ensure the index is within range 1 to " + tcount);
+        }
         tlist[i - 1].markDone();
         System.out.println(hline);
         System.out.println("Nice! I've marked this task as done:");
@@ -22,8 +39,28 @@ public class whchenyicn {
         System.out.println(hline);
     }
 
-    private void unmark(String s) {
-        Integer i = Integer.parseInt(s.substring(7).trim());
+    private void unmark(String s) throws whchenyicnExceptions {
+
+        if (s.length() <= 7) {
+            throw new whchenyicnExceptions("Please provide a task number");
+        }
+
+        if (tcount <= 0 ) {
+            throw new whchenyicnExceptions("list is empty! you cant unmark anything");
+        }
+
+        int i;
+
+        try {
+            i = Integer.parseInt(s.substring(7).trim());
+        } catch (NumberFormatException e) {
+            throw new whchenyicnExceptions("Index must be a number");
+        }
+
+        if (i < 1 || i > tcount) {
+            throw new whchenyicnExceptions("Invalid Index, please ensure the index is within range 1 to " + tcount);
+        }
+
         tlist[i - 1].unmark();
         System.out.println(hline);
         System.out.println("OK, I've marked this task as not done yet:");
@@ -31,8 +68,11 @@ public class whchenyicn {
         System.out.println(hline);
     }
 
-    private void list() {
+    private void list(){
         System.out.println(hline);
+        if (tcount <=0 ) {
+            System.out.println("List is empty");
+        }
         for (int i = 0; i < tcount; i++) {
             int number = i + 1;
             System.out.println(number + ". " + tlist[i].toString());
@@ -40,8 +80,17 @@ public class whchenyicn {
         System.out.println(hline);
     }
 
-    private void todoTask(String s) {
+    private void todoTask(String s) throws whchenyicnExceptions{
+        checkFull();
+
+        if (s.length() <= 4) {
+            throw new whchenyicnExceptions("Description cannot be empty");
+        }
+
         String desc = s.substring(5).trim();
+        if (desc.isEmpty()) {
+            throw new whchenyicnExceptions("Description cannot be empty");
+        }
         tlist[tcount++] = new ToDo(desc);
         System.out.println(hline);
         System.out.println("Got it. I've added this task:");
@@ -50,11 +99,38 @@ public class whchenyicn {
         System.out.println(hline);
     }
 
-    private void deadlineTask(String s) {
+    private void deadlineTask(String s) throws whchenyicnExceptions{
+        checkFull();
+
+        if (s == null || s.length() <= 8) {
+            throw new whchenyicnExceptions(("task cannot be empty, use deadline <desc> /by <when>"));
+        }
+
         String rest = s.substring(9).trim();
+
+        if (rest.isEmpty()) {
+            throw new whchenyicnExceptions("task cannot be empty, use deadline <desc> /by <when>");
+        }
+
         int b = rest.indexOf("/by");
+
+        if (b < 0) {
+            throw new whchenyicnExceptions("Missing '/by', use deadline <desc> /by <when>");
+        }
+
         String desc = rest.substring(0, b).trim();
         String by = rest.substring(b + 3).trim().replaceFirst("^:", "").trim();
+
+        if (desc.isEmpty()) {
+            throw new whchenyicnExceptions("Description cannot be empty 'deadline <desc> /by <when>' ");
+        }
+
+        if (by.isEmpty()) {
+            throw new whchenyicnExceptions("The deadline cannot be empty, 'deadline <desc> /by <when>'");
+        }
+
+
+
         tlist[tcount++] = new Deadline(desc, by);
         System.out.println(hline);
         System.out.println("Got it. I've added this task:");
@@ -63,13 +139,38 @@ public class whchenyicn {
         System.out.println(hline);
     }
 
-    private void eventTask(String s) {
+    private void eventTask(String s) throws whchenyicnExceptions{
+        checkFull();
+
+        if (s == null || s.length() <= 5) {
+            throw new whchenyicnExceptions("Cannot be empty, event <desc> /from <start> /to <end>");
+        }
         String rest = s.substring(6).trim();
         int f = rest.indexOf("/from");
         int t = rest.indexOf("/to");
+        if (f <= 0 || t <= f) {
+            throw new whchenyicnExceptions("event <desc> /from <start> /to <end>");
+        }
         String desc = rest.substring(0, f).trim();
+
+        if (desc.isEmpty()) {
+            throw new whchenyicnExceptions("description cannot be empty");
+        }
+
         String from = rest.substring(f + 5, t).trim().replaceFirst("^:", "").trim();
+
+        if (from.isEmpty()) {
+            throw new whchenyicnExceptions("from date cannot be empty");
+        }
+
         String to = rest.substring(t + 3).trim().replaceFirst("^:", "").trim();
+
+        if (to.isEmpty()) {
+            throw new whchenyicnExceptions("to date cannot be empty");
+        }
+
+
+
         tlist[tcount++] = new Event(desc, from, to);
         System.out.println(hline);
         System.out.println("Got it. I've added this task:");
@@ -77,6 +178,12 @@ public class whchenyicn {
         System.out.println("Now you have " + tcount + " tasks in the list.");
         System.out.println(hline);
 
+    }
+
+    private void checkFull() throws whchenyicnExceptions {
+        if (tcount >=100) {
+            throw new whchenyicnExceptions("List is full, max 100");
+        }
     }
 
 
@@ -92,30 +199,32 @@ public class whchenyicn {
                 System.out.println("Bye! Hope to see you again soon!");
                 System.out.println(hline);
                 break;
-            } else {
+            }
+
+            try {
                 if (s.startsWith("mark")) {
                     w.mark(s);
-                } else {
+                } else if (s.startsWith("unmark")) {
                     //mark as undone
-                    if (s.startsWith("unmark")) {
-                        w.unmark(s);
-                    } else {
-                        // Listing out everything
-                        if (s.equals("list")) {
-                            w.list();
-                        }
-                        else if (s.startsWith("todo ")) {
-                            w.todoTask(s);
-                        }
-                        else if (s.startsWith("deadline ")) {
-                            w.deadlineTask(s);
-                        }
-                        else if (s.startsWith("event ")) {
-                            w.eventTask(s);
-                        }
-                    }
+                    w.unmark(s);
+                } else if (s.equals("list")) {
+                    // Listing out everything
+                    w.list();
+                } else if (s.startsWith("todo")) {
+                    w.todoTask(s);
+                } else if (s.startsWith("deadline")) {
+                    w.deadlineTask(s);
+                } else if (s.startsWith("event")) {
+                    w.eventTask(s);
+                } else {
+                    throw new whchenyicnExceptions("Invalid command, try 'todo', 'deadline', 'event', 'list', 'mark', 'unmark'");
                 }
+            } catch (whchenyicnExceptions ex) {
+                System.out.println(hline);
+                System.out.println(ex.getMessage());
+                System.out.println(hline);
             }
         }
     }
 }
+
