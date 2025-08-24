@@ -1,9 +1,12 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class whchenyicn {
     private static String hline = "__________________________________________________";
-    private Task[] tlist = new Task[100];
-    private int tcount = 0;
+    //private Task[] tlist = new Task[100];
+    private List<Task> tlist = new ArrayList<>(100);
+    //private int tcount = 0;
 
     private void start() {
         System.out.println(hline);
@@ -19,7 +22,7 @@ public class whchenyicn {
             throw new whchenyicnExceptions("Please provide a task number");
         }
 
-        if (tcount <= 0 ) {
+        if (tlist.size() == 0 ) {
             throw new whchenyicnExceptions("list is empty! you cant mark anything");
         }
 
@@ -29,13 +32,13 @@ public class whchenyicn {
         } catch (NumberFormatException e) {
             throw new whchenyicnExceptions("Index must be a number");
         }
-        if (i < 1 || i > tcount) {
-            throw new whchenyicnExceptions("Invalid Index, please ensure the index is within range 1 to " + tcount);
+        if (i < 1 || i > tlist.size()) {
+            throw new whchenyicnExceptions("Invalid Index, please ensure the index is within range 1 to " + tlist.size());
         }
-        tlist[i - 1].markDone();
+        tlist.get(i - 1).markDone();
         System.out.println(hline);
         System.out.println("Nice! I've marked this task as done:");
-        System.out.println(tlist[i - 1].toString());
+        System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
     }
 
@@ -45,7 +48,7 @@ public class whchenyicn {
             throw new whchenyicnExceptions("Please provide a task number");
         }
 
-        if (tcount <= 0 ) {
+        if (tlist.size() == 0 ) {
             throw new whchenyicnExceptions("list is empty! you cant unmark anything");
         }
 
@@ -57,25 +60,25 @@ public class whchenyicn {
             throw new whchenyicnExceptions("Index must be a number");
         }
 
-        if (i < 1 || i > tcount) {
-            throw new whchenyicnExceptions("Invalid Index, please ensure the index is within range 1 to " + tcount);
+        if (i < 1 || i > tlist.size()) {
+            throw new whchenyicnExceptions("Invalid Index, please ensure the index is within range 1 to " + tlist.size());
         }
 
-        tlist[i - 1].unmark();
+        tlist.get(i - 1).unmark();
         System.out.println(hline);
         System.out.println("OK, I've marked this task as not done yet:");
-        System.out.println(tlist[i - 1].toString());
+        System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
     }
 
     private void list(){
         System.out.println(hline);
-        if (tcount <=0 ) {
+        if (tlist.size() <=0 ) {
             System.out.println("List is empty");
         }
-        for (int i = 0; i < tcount; i++) {
+        for (int i = 0; i < tlist.size(); i++) {
             int number = i + 1;
-            System.out.println(number + ". " + tlist[i].toString());
+            System.out.println(number + ". " + tlist.get(i).toString());
         }
         System.out.println(hline);
     }
@@ -91,11 +94,11 @@ public class whchenyicn {
         if (desc.isEmpty()) {
             throw new whchenyicnExceptions("Description cannot be empty");
         }
-        tlist[tcount++] = new ToDo(desc);
+        tlist.add(new ToDo(desc));
         System.out.println(hline);
         System.out.println("Got it. I've added this task:");
-        System.out.println("  " + tlist[tcount - 1].toString());
-        System.out.println("Now you have " + tcount + " tasks in the list.");
+        System.out.println("  " + tlist.get(tlist.size() - 1).toString());
+        System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
     }
 
@@ -131,11 +134,11 @@ public class whchenyicn {
 
 
 
-        tlist[tcount++] = new Deadline(desc, by);
+        tlist.add(new Deadline(desc, by));
         System.out.println(hline);
         System.out.println("Got it. I've added this task:");
-        System.out.println("  " + tlist[tcount - 1].toString());
-        System.out.println("Now you have " + tcount + " tasks in the list.");
+        System.out.println("  " + tlist.get(tlist.size() - 1).toString());
+        System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
     }
 
@@ -171,19 +174,48 @@ public class whchenyicn {
 
 
 
-        tlist[tcount++] = new Event(desc, from, to);
+        tlist.add(new Event(desc, from, to));
         System.out.println(hline);
         System.out.println("Got it. I've added this task:");
-        System.out.println("  " + tlist[tcount - 1].toString());
-        System.out.println("Now you have " + tcount + " tasks in the list.");
+        System.out.println("  " + tlist.get(tlist.size() - 1).toString());
+        System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
 
     }
 
     private void checkFull() throws whchenyicnExceptions {
-        if (tcount >=100) {
+        if (tlist.size() >=100) {
             throw new whchenyicnExceptions("List is full, max 100");
         }
+    }
+
+    private void deleteTask (String s) throws whchenyicnExceptions {
+        if (tlist.size() == 0) {
+            throw new whchenyicnExceptions("List is empty! You can't delete anything");
+        }
+
+        if (s.length() <= 7) {
+            throw new whchenyicnExceptions("Provide the task number you want to delete");
+        }
+
+        int i;
+
+        try {
+            i = Integer.parseInt(s.substring(7).trim());
+        } catch (NumberFormatException e) {
+            throw new whchenyicnExceptions("Index must be a number");
+        }
+        if (i < 1 || i > tlist.size()) {
+            throw new whchenyicnExceptions("Invalid Index, please ensure the index is within range 1 to " + tlist.size());
+        }
+
+        Task remove = tlist.remove(i - 1);
+        System.out.println(hline);
+        System.out.println("This task has been removed");
+        System.out.println("  " + remove.toString());
+        System.out.println(tlist.size() + " tasks left in the list.");
+        System.out.println(hline);
+
     }
 
 
@@ -216,7 +248,10 @@ public class whchenyicn {
                     w.deadlineTask(s);
                 } else if (s.startsWith("event")) {
                     w.eventTask(s);
-                } else {
+                } else if (s.startsWith("delete")) {
+                    w.deleteTask(s);
+                }
+                else {
                     throw new whchenyicnExceptions("Invalid command, try 'todo', 'deadline', 'event', 'list', 'mark', 'unmark'");
                 }
             } catch (whchenyicnExceptions ex) {
