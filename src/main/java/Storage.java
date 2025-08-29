@@ -82,8 +82,13 @@ public class Storage {
             if (parts.length <4) {
                 return null;
             }
-            t = new Deadline(desc, parts[3].trim());
-            break;
+            try {
+                t = new Deadline(desc, parts[3].trim());
+                break;
+            }
+            catch (IllegalArgumentException e) {
+                return null;
+            }
         case "E":
             if (parts.length < 5) {
                 return null;

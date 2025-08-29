@@ -156,7 +156,13 @@ public class whchenyicn {
 
 
 
-        tlist.add(new Deadline(desc, by));
+        try {
+            tlist.add(new Deadline(desc, by));
+        }
+        catch (IllegalArgumentException ex) {
+            throw new whchenyicnExceptions("Invalid date. Use yyyy-MM-dd");
+        }
+
         System.out.println(hline);
         System.out.println("Got it. I've added this task:");
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
