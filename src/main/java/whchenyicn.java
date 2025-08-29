@@ -1,18 +1,37 @@
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.List;
 
 public class whchenyicn {
     private static String hline = "__________________________________________________";
-    //private Task[] tlist = new Task[100];
     private List<Task> tlist = new ArrayList<>(100);
-    //private int tcount = 0;
+    private Storage storage = new Storage();
 
     private void start() {
         System.out.println(hline);
         System.out.println("Hello! I'm whchenyicn");
         System.out.println("What can I do for you?");
         System.out.println(hline);
+        List<Task> load = storage.load();
+        if (!load.isEmpty()) {
+            tlist.clear();
+            tlist.addAll(load);
+            System.out.println(hline);
+            System.out.println("Loaded " + tlist.size() + " tasks from list");
+            System.out.println(hline);
+        }
+    }
+
+    private void save() {
+        try {
+            storage.save(tlist);
+        }
+        catch (IOException e){
+            System.out.println(hline);
+            System.out.println("failed to save: " + e.getMessage());
+            System.out.println(hline);
+        }
     }
 
     private void mark(String s) throws whchenyicnExceptions{
@@ -40,6 +59,7 @@ public class whchenyicn {
         System.out.println("Nice! I've marked this task as done:");
         System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
+        save();
     }
 
     private void unmark(String s) throws whchenyicnExceptions {
@@ -69,6 +89,7 @@ public class whchenyicn {
         System.out.println("OK, I've marked this task as not done yet:");
         System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
+        save();
     }
 
     private void list(){
@@ -100,6 +121,7 @@ public class whchenyicn {
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
+        save();
     }
 
     private void deadlineTask(String s) throws whchenyicnExceptions{
@@ -140,6 +162,7 @@ public class whchenyicn {
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
+        save();
     }
 
     private void eventTask(String s) throws whchenyicnExceptions{
@@ -180,6 +203,7 @@ public class whchenyicn {
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
+        save();
 
     }
 
@@ -215,7 +239,7 @@ public class whchenyicn {
         System.out.println("  " + remove.toString());
         System.out.println(tlist.size() + " tasks left in the list.");
         System.out.println(hline);
-
+        save();
     }
 
 
