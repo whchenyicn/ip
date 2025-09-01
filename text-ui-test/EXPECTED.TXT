@@ -1,19 +1,19 @@
 __________________________________________________
-Hello! I'm whchenyicn
+Hello! I'm whchenyicn.whchenyicn
 What can I do for you?
 __________________________________________________
 __________________________________________________
-Got it. I've added this task:
+Got it. I've added this whchenyicn.task:
   [T][ ] read book
 Now you have 1 tasks in the list.
 __________________________________________________
 __________________________________________________
-Got it. I've added this task:
+Got it. I've added this whchenyicn.task:
   [E][ ] project meeting (from: Mon 2pm to: 4pm)
 Now you have 2 tasks in the list.
 __________________________________________________
 __________________________________________________
-Got it. I've added this task:
+Got it. I've added this whchenyicn.task:
   [D][ ] return book (by: Sunday)
 Now you have 3 tasks in the list.
 __________________________________________________
@@ -23,11 +23,11 @@ __________________________________________________
 3. [D][ ] return book (by: Sunday)
 __________________________________________________
 __________________________________________________
-Nice! I've marked this task as done:
+Nice! I've marked this whchenyicn.task as done:
 [T][X] read book
 __________________________________________________
 __________________________________________________
-OK, I've marked this task as not done yet:
+OK, I've marked this whchenyicn.task as not done yet:
 [T][ ] read book
 __________________________________________________
 __________________________________________________

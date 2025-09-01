@@ -1,3 +1,7 @@
+package whchenyicn.ui;
+
+import whchenyicn.task.*;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -21,7 +25,7 @@ public class Storage {
     }
 
     /**
-     * Loads data from whchenyicn.txt and adds to TaskList
+     * Loads data from whchenyicn.txt and adds to whchenyicn.task.TaskList
      * @return returns a list of tasks
      */
     public TaskList load() {
@@ -47,7 +51,7 @@ public class Storage {
 
     /**
      * saves the tasks after each change
-     * @param taskList takes in a list of tasks and adds it to whchenyicn.txt
+     * @param taskList takes in a list of tasks and adds it to whchenyicn.whchenyicn.txt
      * @throws IOException throws error if file doesn't exist
      */
     public void save(TaskList taskList) throws IOException{

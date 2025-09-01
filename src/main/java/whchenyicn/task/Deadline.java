@@ -1,3 +1,5 @@
+package whchenyicn.task;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -9,9 +11,9 @@ public class Deadline extends Task {
     private LocalDate by;
 
     /**
-     * Deadline Task
+     * whchenyicn.task.Deadline whchenyicn.task.Task
      * @param description description of the tasks
-     * @param by when the task must be done by
+     * @param by when the whchenyicn.task must be done by
      */
     public Deadline(String description, String by) {
         super(description);

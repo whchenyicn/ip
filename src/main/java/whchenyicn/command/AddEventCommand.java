@@ -1,4 +1,11 @@
+package whchenyicn.command;
+
 import java.io.IOException;
+import whchenyicn.ui.Storage;
+import whchenyicn.ui.Ui;
+import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.task.TaskList;
+import whchenyicn.task.Event;
 
 public class AddEventCommand extends Command {
     private String s;

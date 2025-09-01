@@ -1,4 +1,10 @@
+package whchenyicn.command;
+
 import java.io.IOException;
+import whchenyicn.ui.Storage;
+import whchenyicn.ui.Ui;
+import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.task.TaskList;
 
 public class UnmarkCommand extends Command {
     private String s;
@@ -10,7 +16,7 @@ public class UnmarkCommand extends Command {
     @Override
     public void execute(TaskList tlist, Ui ui, Storage storage) throws whchenyicnExceptions {
         if (s == null || s.isEmpty()) {
-            throw new whchenyicnExceptions("Please provide a task number");
+            throw new whchenyicnExceptions("Please provide a whchenyicn.task number");
         }
 
         if (tlist.size() == 0 ) {

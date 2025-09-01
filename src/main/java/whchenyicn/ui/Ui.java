@@ -1,3 +1,8 @@
+package whchenyicn.ui;
+
+import whchenyicn.task.Task;
+import whchenyicn.task.TaskList;
+
 import java.util.Scanner;
 
 public class Ui {
@@ -14,7 +19,7 @@ public class Ui {
 
     public void printWelcome() {
         System.out.println(hline);
-        System.out.println("Hello! I'm whchenyicn");
+        System.out.println("Hello! I'm whchenyicn.whchenyicn");
         System.out.println("What can I do for you?");
         System.out.println(hline);
     }
@@ -33,14 +38,14 @@ public class Ui {
 
     public void printMarked(TaskList tlist, int i) {
         System.out.println(hline);
-        System.out.println("Nice! I've marked this task as done:");
+        System.out.println("Nice! I've marked this whchenyicn.task as done:");
         System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
     }
 
     public void printUnmarked(TaskList tlist, int i) {
         System.out.println(hline);
-        System.out.println("OK, I've marked this task as not done yet:");
+        System.out.println("OK, I've marked this whchenyicn.task as not done yet:");
         System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
     }
@@ -59,7 +64,7 @@ public class Ui {
 
     public void printTodoTask(TaskList tlist) {
         System.out.println(hline);
-        System.out.println("Got it. I've added this task:");
+        System.out.println("Got it. I've added this whchenyicn.task:");
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
@@ -67,7 +72,7 @@ public class Ui {
 
     public void printDeadlineTask(TaskList tlist) {
         System.out.println(hline);
-        System.out.println("Got it. I've added this task:");
+        System.out.println("Got it. I've added this whchenyicn.task:");
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
@@ -75,7 +80,7 @@ public class Ui {
 
     public void printEventTask(TaskList tlist) {
         System.out.println(hline);
-        System.out.println("Got it. I've added this task:");
+        System.out.println("Got it. I've added this whchenyicn.task:");
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
         System.out.println(hline);
@@ -83,7 +88,7 @@ public class Ui {
 
     public void printDelete(TaskList tlist, Task remove) {
         System.out.println(hline);
-        System.out.println("This task has been removed");
+        System.out.println("This whchenyicn.task has been removed");
         System.out.println("  " + remove.toString());
         System.out.println(tlist.size() + " tasks left in the list.");
         System.out.println(hline);

@@ -1,3 +1,11 @@
+package whchenyicn;
+
+import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.task.TaskList;
+import whchenyicn.command.Command;
+import whchenyicn.ui.Parser;
+import whchenyicn.ui.Storage;
+import whchenyicn.ui.Ui;
 
 public class whchenyicn {
     private TaskList tlist = new TaskList(100);

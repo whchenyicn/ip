@@ -1,4 +1,10 @@
+package whchenyicn.command;
+
 import java.io.IOException;
+import whchenyicn.task.*;
+import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.ui.Storage;
+import whchenyicn.ui.Ui;
 
 public class AddDeadlineCommand extends Command{
 
@@ -15,11 +21,11 @@ public class AddDeadlineCommand extends Command{
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws whchenyicnExceptions{
+    public void execute(TaskList tlist, Ui ui, Storage storage) throws whchenyicnExceptions {
         checkFull(tlist);
 
         if (s == null || s.isEmpty()) {
-            throw new whchenyicnExceptions(("task cannot be empty, use deadline <desc> /by <when>"));
+            throw new whchenyicnExceptions(("whchenyicn.task cannot be empty, use deadline <desc> /by <when>"));
         }
 
         int b = s.indexOf("/by");

@@ -1,3 +1,8 @@
+package whchenyicn.ui;
+
+import whchenyicn.command.*;
+import whchenyicn.exceptions.whchenyicnExceptions;
+
 public class Parser {
     public static boolean isExit(String input) {
         return input.trim().equalsIgnoreCase("bye");
@@ -44,7 +49,7 @@ public class Parser {
         case "event":
             return new AddEventCommand(arg);
         default:
-            throw new whchenyicnExceptions("Invalid command: " + command);
+            throw new whchenyicnExceptions("Invalid whchenyicn.command: " + command);
         }
     }
 }
