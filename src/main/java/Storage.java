@@ -24,8 +24,8 @@ public class Storage {
      * Loads data from whchenyicn.txt and adds to TaskList
      * @return returns a list of tasks
      */
-    public List<Task> load() {
-        List<Task> taskList = new ArrayList<>();
+    public TaskList load() {
+        TaskList taskList = new TaskList();
         try {
             if (file.getParent() != null && !Files.exists(file.getParent())) {
                 Files.createDirectories(file.getParent());
@@ -50,14 +50,14 @@ public class Storage {
      * @param taskList takes in a list of tasks and adds it to whchenyicn.txt
      * @throws IOException throws error if file doesn't exist
      */
-    public void save(List<Task> taskList) throws IOException{
+    public void save(TaskList taskList) throws IOException{
         if (file.getParent() != null && !Files.exists(file.getParent())) {
             Files.createDirectories(file.getParent());
         }
 
         List<String> lines = new ArrayList<>();
 
-        for (Task t : taskList) {
+        for (Task t : taskList.asList()) {
             lines.add(t.toSave());
         }
 

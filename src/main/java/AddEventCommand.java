@@ -1,0 +1,57 @@
+import java.io.IOException;
+
+public class AddEventCommand extends Command {
+    private String s;
+
+    public AddEventCommand(String s) {
+        this.s = s;
+    }
+
+    private void checkFull(TaskList tlist) throws whchenyicnExceptions {
+        if (tlist.size() >= 100) {
+            throw new whchenyicnExceptions("List is full, max 100");
+        }
+    }
+
+    @Override
+    public void execute(TaskList tlist, Ui ui, Storage storage) throws whchenyicnExceptions {
+        checkFull(tlist);
+
+        if (s == null || s.isEmpty()) {
+            throw new whchenyicnExceptions("Cannot be empty, event <desc> /from <start> /to <end>");
+        }
+
+        int f = s.indexOf("/from");
+        int t = s.indexOf("/to");
+        if (f <= 0 || t <= f) {
+            throw new whchenyicnExceptions("event <desc> /from <start> /to <end>");
+        }
+        String desc = s.substring(0, f).trim();
+
+        if (desc.isEmpty()) {
+            throw new whchenyicnExceptions("description cannot be empty");
+        }
+
+        String from = s.substring(f + 5, t).trim().replaceFirst("^:", "").trim();
+
+        if (from.isEmpty()) {
+            throw new whchenyicnExceptions("from date cannot be empty");
+        }
+
+        String to = s.substring(t + 3).trim().replaceFirst("^:", "").trim();
+
+        if (to.isEmpty()) {
+            throw new whchenyicnExceptions("to date cannot be empty");
+        }
+
+
+        tlist.add(new Event(desc, from, to));
+        ui.printEventTask(tlist);
+
+        try {
+            storage.save(tlist);
+        } catch (IOException e) {
+            ui.printError("Failed to save: " + e.getMessage());
+        }
+    }
+}
