@@ -7,17 +7,19 @@ import whchenyicn.exceptions.whchenyicnExceptions;
 import whchenyicn.task.TaskList;
 import whchenyicn.task.Event;
 
+/**
+ * A command to add an event task to tasklist.
+ */
 public class AddEventCommand extends Command {
     private String s;
 
+    /**
+     * Creates a command to add event task.
+     *
+     * @param s User input text after "event".
+     */
     public AddEventCommand(String s) {
         this.s = s;
-    }
-
-    private void checkFull(TaskList tlist) throws whchenyicnExceptions {
-        if (tlist.size() >= 100) {
-            throw new whchenyicnExceptions("List is full, max 100");
-        }
     }
 
     @Override

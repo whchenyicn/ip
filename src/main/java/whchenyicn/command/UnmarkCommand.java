@@ -6,9 +6,17 @@ import whchenyicn.ui.Ui;
 import whchenyicn.exceptions.whchenyicnExceptions;
 import whchenyicn.task.TaskList;
 
+/**
+ * A command to mark a task in the list as not done.
+ */
 public class UnmarkCommand extends Command {
     private String s;
 
+    /**
+     * Creates command to mark task as not done.
+     *
+     * @param s User input string after "unmark".
+     */
     public UnmarkCommand(String s) {
         this.s = s;
     }

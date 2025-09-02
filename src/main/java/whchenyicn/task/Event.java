@@ -1,9 +1,19 @@
 package whchenyicn.task;
 
+/**
+ * An event task with a start time and end time.
+ */
 public class Event extends Task{
     private String from;
     private String to;
 
+    /**
+     * Creates an Event Task.
+     *
+     * @param description Description of event.
+     * @param from Start date.
+     * @param to End date.
+     */
     public Event(String description, String from, String to) {
         super(description);
         this.from = from;

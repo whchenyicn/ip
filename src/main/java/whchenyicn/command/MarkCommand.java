@@ -6,9 +6,17 @@ import whchenyicn.ui.Ui;
 import whchenyicn.exceptions.whchenyicnExceptions;
 import whchenyicn.task.TaskList;
 
+/**
+ * A command to mark a task in the list as done.
+ */
 public class MarkCommand extends Command {
     private String s;
 
+    /**
+     * Creates command to mark Task as done.
+     *
+     * @param s User input String after "mark".
+     */
     public MarkCommand(String s) {
         this.s = s;
     }
