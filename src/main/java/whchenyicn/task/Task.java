@@ -13,7 +13,7 @@ public class Task {
         return desc;
     }
 
-    protected int isDone() {
+    protected int getDoneFlag() {
         if (this.isDone) {
             return 1;
         }
@@ -21,7 +21,6 @@ public class Task {
             return 0;
         }
     }
-
 
     public String getStatus() {
         return (isDone ? "X" : " ");
@@ -36,7 +35,7 @@ public class Task {
     }
 
     public String toSave() {
-        return String.format("? | %d | %s", isDone(), desc);
+        return String.format("? | %d | %s", getDoneFlag(), desc);
     }
 
     public String toString() {

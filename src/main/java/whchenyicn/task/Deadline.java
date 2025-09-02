@@ -1,12 +1,9 @@
 package whchenyicn.task;
 
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
 public class Deadline extends Task {
-    private static final DateTimeFormatter PRINT_FMT = DateTimeFormatter.ofPattern("MMM dd yyyy");
-    private static final DateTimeFormatter SAVE_FMT  = DateTimeFormatter.ISO_LOCAL_DATE;
 
     private LocalDate by;
 
@@ -24,8 +21,7 @@ public class Deadline extends Task {
         s = s.trim();
         try {
             return LocalDate.parse(s);
-        }
-        catch (DateTimeParseException e) {
+        } catch (DateTimeParseException e) {
             System.out.println("Error Parsing: " + e.getMessage());
         }
 
@@ -34,7 +30,7 @@ public class Deadline extends Task {
 
     @Override
     public String toSave() {
-        return String.format("D | %d | %s | %s", isDone(), getDesc(), by);
+        return String.format("D | %d | %s | %s", getDoneFlag(), getDesc(), by);
     }
     @Override
     public String toString() {

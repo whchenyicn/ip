@@ -1,4 +1,4 @@
-# whchenyicn.whchenyicn User Guide
+# whchenyicn.Whchenyicn User Guide
 
 // Update the title above to match the actual product name
 

@@ -11,7 +11,7 @@ public class TaskList {
     }
 
     public TaskList(int limit) {
-        this.taskList = new ArrayList<>(100);
+        this.taskList = new ArrayList<>(limit);
     }
 
     public TaskList(List<Task> tlist) {

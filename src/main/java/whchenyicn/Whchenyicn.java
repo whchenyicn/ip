@@ -1,13 +1,13 @@
 package whchenyicn;
 
-import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.task.TaskList;
 import whchenyicn.command.Command;
 import whchenyicn.ui.Parser;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
 
-public class whchenyicn {
+public class Whchenyicn {
     private TaskList tlist = new TaskList(100);
     private Storage storage = new Storage();
     private static Ui ui = new Ui();
@@ -31,17 +31,15 @@ public class whchenyicn {
                 Command c = Parser.parse(s);
                 c.execute(tlist, ui, storage);
                 isExit = c.isExit();
-            }
-            catch (whchenyicnExceptions e){
+            } catch (WhchenyicnException e){
                 ui.printError(e.getMessage());
             }
         }
     }
 
     public static void main(String[] args) {
-        new whchenyicn().run();
-
-        }
+        new Whchenyicn().run();
     }
+}
 
 

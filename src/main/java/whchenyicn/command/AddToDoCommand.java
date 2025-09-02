@@ -3,7 +3,7 @@ package whchenyicn.command;
 import java.io.IOException;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
-import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.task.TaskList;
 import whchenyicn.task.ToDo;
 
@@ -14,14 +14,14 @@ public class AddToDoCommand extends Command {
         this.s = s;
     }
 
-    private void checkFull(TaskList tlist) throws whchenyicnExceptions {
-        if (tlist.size() >=100) {
-            throw new whchenyicnExceptions("List is full, max 100");
+    private void checkFull(TaskList tlist) throws WhchenyicnException {
+        if (tlist.size() >= 100) {
+            throw new WhchenyicnException("List is full, max 100");
         }
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws whchenyicnExceptions {
+    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         checkFull(tlist);
 
         tlist.add(new ToDo(s));

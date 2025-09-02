@@ -1,6 +1,6 @@
 package whchenyicn.task;
 
-public class ToDo extends Task{
+public class ToDo extends Task {
 
     public ToDo(String description) {
         super(description);
@@ -8,7 +8,7 @@ public class ToDo extends Task{
 
     @Override
     public String toSave() {
-        return String.format("T | %d | %s", isDone(), getDesc());
+        return String.format("T | %d | %s", getDoneFlag(), getDesc());
     }
 
     @Override
