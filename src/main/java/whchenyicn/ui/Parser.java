@@ -3,11 +3,20 @@ package whchenyicn.ui;
 import whchenyicn.command.*;
 import whchenyicn.exceptions.WhchenyicnException;
 
+/**
+ * Class to parse user input
+ */
 public class Parser {
     public static boolean isExit(String input) {
         return input.trim().equalsIgnoreCase("bye");
     }
 
+    /**
+     * Parses the user input into command
+     *
+     * @param input User input.
+     * @return Returns the String of the Command.
+     */
     public static String getCommand(String input) {
         if (input == null || input.trim().isEmpty()) {
             return "";
@@ -15,6 +24,12 @@ public class Parser {
         return input.trim().split("\\s+", 2)[0];
     }
 
+    /**
+     * Parses the user input into details.
+     *
+     * @param input User input.
+     * @return Returns the Details.
+     */
     public static String getArg(String input) {
         if (input == null || input.trim().isEmpty()) {
             return "";
@@ -26,6 +41,12 @@ public class Parser {
         return "";
     }
 
+    /**
+     * Parses the user input into specific commands
+     *
+     * @param input User input.
+     * @return Returns the Command.
+     */
     public static Command parse(String input) throws WhchenyicnException {
         String command = getCommand(input);
         String arg = getArg(input);

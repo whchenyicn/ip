@@ -7,18 +7,20 @@ import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
 
+/**
+ * A command to add a deadline task to tasklist.
+ */
 public class AddDeadlineCommand extends Command {
 
     private String s;
 
+    /**
+     * Creates a Command to Add Deadline Task.
+     *
+     * @param s User input text after "deadline".
+     */
     public AddDeadlineCommand(String s) {
         this.s = s;
-    }
-
-    private void checkFull(TaskList tlist) throws WhchenyicnException {
-        if (tlist.size() >= 100) {
-            throw new WhchenyicnException("List is full, max 100");
-        }
     }
 
     @Override
