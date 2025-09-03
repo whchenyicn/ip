@@ -48,6 +48,8 @@ public class Parser {
             return new AddDeadlineCommand(arg);
         case "event":
             return new AddEventCommand(arg);
+        case "find":
+            return new FindCommand(arg);
         default:
             throw new whchenyicnExceptions("Invalid whchenyicn.command: " + command);
         }
