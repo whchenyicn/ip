@@ -22,7 +22,7 @@ public class TaskList {
      * @param limit Max number of tasks.
      */
     public TaskList(int limit) {
-        this.taskList = new ArrayList<>(100);
+        this.taskList = new ArrayList<>(limit);
     }
 
     /**

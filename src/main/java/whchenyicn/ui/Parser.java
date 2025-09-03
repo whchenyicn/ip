@@ -1,7 +1,7 @@
 package whchenyicn.ui;
 
 import whchenyicn.command.*;
-import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.exceptions.WhchenyicnException;
 
 public class Parser {
     public static boolean isExit(String input) {
@@ -26,7 +26,7 @@ public class Parser {
         return "";
     }
 
-    public static Command parse(String input) throws whchenyicnExceptions {
+    public static Command parse(String input) throws WhchenyicnException {
         String command = getCommand(input);
         String arg = getArg(input);
 
@@ -49,7 +49,7 @@ public class Parser {
         case "event":
             return new AddEventCommand(arg);
         default:
-            throw new whchenyicnExceptions("Invalid whchenyicn.command: " + command);
+            throw new WhchenyicnException("Invalid whchenyicn.command: " + command);
         }
     }
 }

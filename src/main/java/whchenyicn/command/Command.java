@@ -2,42 +2,12 @@ package whchenyicn.command;
 
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
-import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.task.TaskList;
 
-/**
- * A command class with execute function.
- */
 public abstract class Command {
-
-    /**
-     * Executes the command using provided fields.
-     *
-     * @param list TaskList to execute on.
-     * @param ui UI to interact with user.
-     * @param storage Storage to store data from interaction.
-     * @throws whchenyicnExceptions Throws error if encounter any issue.
-     */
-    public abstract void execute(TaskList list, Ui ui, Storage storage) throws whchenyicnExceptions;
-
-    /**
-     * Returns whether application is terminating.
-     *
-     * @return True if terminating, false if not.
-     */
+    public abstract void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException;
     public boolean isExit() {
         return false;
-    }
-
-    /**
-     * Checks if list is full.
-     *
-     * @param tlist List to be checked.
-     * @throws whchenyicnExceptions Throws error if list is full.
-     */
-    public void checkFull(TaskList tlist) throws whchenyicnExceptions {
-        if (tlist.size() >=100) {
-            throw new whchenyicnExceptions("List is full, max 100");
-        }
     }
 }

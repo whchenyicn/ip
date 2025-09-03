@@ -1,24 +1,17 @@
 package whchenyicn;
 
-import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.task.TaskList;
 import whchenyicn.command.Command;
 import whchenyicn.ui.Parser;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
 
-/**
- * Main class to run the whchenyicn chatbot.
- */
-public class whchenyicn {
+public class Whchenyicn {
     private TaskList tlist = new TaskList(100);
     private Storage storage = new Storage();
     private static Ui ui = new Ui();
 
-    /**
-     * Initializes application state.
-     * Prints welcome message, load tasks from storage, show loaded tasks.
-     */
     private void start() {
         ui.printWelcome();
         TaskList load = storage.load();
@@ -29,11 +22,6 @@ public class whchenyicn {
         }
     }
 
-    /**
-     * Runs the loop that reads line of user input.
-     * Parses input into command and executes command.
-     * Catches errors and prints message.
-     */
     public void run() {
         start();
         boolean isExit = false;
@@ -43,17 +31,15 @@ public class whchenyicn {
                 Command c = Parser.parse(s);
                 c.execute(tlist, ui, storage);
                 isExit = c.isExit();
-            }
-            catch (whchenyicnExceptions e){
+            } catch (WhchenyicnException e){
                 ui.printError(e.getMessage());
             }
         }
     }
 
     public static void main(String[] args) {
-        new whchenyicn().run();
-
-        }
+        new Whchenyicn().run();
     }
+}
 
 

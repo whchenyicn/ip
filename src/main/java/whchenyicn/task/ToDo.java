@@ -1,22 +1,14 @@
 package whchenyicn.task;
 
-/**
- * A ToDo task with a description.
- */
-public class ToDo extends Task{
+public class ToDo extends Task {
 
-    /**
-     * Creates a ToDo Task with description.
-     *
-     * @param description Description of the task.
-     */
     public ToDo(String description) {
         super(description);
     }
 
     @Override
     public String toSave() {
-        return String.format("T | %d | %s", isDone(), getDesc());
+        return String.format("T | %d | %s", getDoneFlag(), getDesc());
     }
 
     @Override

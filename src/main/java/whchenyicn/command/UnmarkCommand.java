@@ -3,7 +3,7 @@ package whchenyicn.command;
 import java.io.IOException;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
-import whchenyicn.exceptions.whchenyicnExceptions;
+import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.task.TaskList;
 
 /**
@@ -22,25 +22,24 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws whchenyicnExceptions {
+    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         if (s == null || s.isEmpty()) {
-            throw new whchenyicnExceptions("Please provide a whchenyicn.task number");
+            throw new WhchenyicnException("Please provide a task number");
         }
 
-        if (tlist.size() == 0 ) {
-            throw new whchenyicnExceptions("list is empty! you cant unmark anything");
+        if (tlist.size() == 0) {
+            throw new WhchenyicnException("list is empty! you cannot unmark anything");
         }
 
         int i;
-
         try {
             i = Integer.parseInt(s.trim());
         } catch (NumberFormatException e) {
-            throw new whchenyicnExceptions("Index must be a number");
+            throw new WhchenyicnException("Index must be a number");
         }
 
         if (i < 1 || i > tlist.size()) {
-            throw new whchenyicnExceptions("Invalid Index, please ensure the index is within range 1 to " + tlist.size());
+            throw new WhchenyicnException("Invalid Index, please ensure the index is within range 1 to " + tlist.size());
         }
 
         tlist.get(i - 1).unmark();

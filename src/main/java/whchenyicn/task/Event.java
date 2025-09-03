@@ -1,19 +1,9 @@
 package whchenyicn.task;
 
-/**
- * An event task with a start time and end time.
- */
-public class Event extends Task{
+public class Event extends Task {
     private String from;
     private String to;
 
-    /**
-     * Creates an Event Task.
-     *
-     * @param description Description of event.
-     * @param from Start date.
-     * @param to End date.
-     */
     public Event(String description, String from, String to) {
         super(description);
         this.from = from;
@@ -22,7 +12,7 @@ public class Event extends Task{
 
     @Override
     public String toSave() {
-        return String.format("E | %d | %s | %s | %s", isDone(), getDesc(), from, to);
+        return String.format("E | %d | %s | %s | %s", getDoneFlag(), getDesc(), from, to);
     }
 
     @Override
