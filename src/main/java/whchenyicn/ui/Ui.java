@@ -155,6 +155,24 @@ public class Ui {
         System.out.println(hline);
     }
 
+    /**
+     * Prints list of tasks that matches find keyword.
+     *
+     * @param matchList List of tasks containing keyword.
+     */
+    public void printFind(TaskList matchList) {
+        System.out.println(hline);
+        if (matchList.isEmpty()) {
+            System.out.println("No matching tasks found.");
+        }
+        else {
+            System.out.println("Here are the matching tasks in your list:");
+            for (int i = 0; i < matchList.size(); i++) {
+                System.out.printf("%d.%s%n", i + 1, matchList.get(i).toString());
+            }
+        }
+        System.out.println(hline);
+    }
 
     /**
      * Prints exit message.
