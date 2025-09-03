@@ -7,11 +7,18 @@ import whchenyicn.ui.Parser;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
 
+/**
+ * Main class to run the whchenyicn chatbot.
+ */
 public class whchenyicn {
     private TaskList tlist = new TaskList(100);
     private Storage storage = new Storage();
     private static Ui ui = new Ui();
 
+    /**
+     * Initializes application state.
+     * Prints welcome message, load tasks from storage, show loaded tasks.
+     */
     private void start() {
         ui.printWelcome();
         TaskList load = storage.load();
@@ -22,6 +29,11 @@ public class whchenyicn {
         }
     }
 
+    /**
+     * Runs the loop that reads line of user input.
+     * Parses input into command and executes command.
+     * Catches errors and prints message.
+     */
     public void run() {
         start();
         boolean isExit = false;

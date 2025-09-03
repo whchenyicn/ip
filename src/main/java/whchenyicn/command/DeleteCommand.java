@@ -7,8 +7,17 @@ import whchenyicn.exceptions.whchenyicnExceptions;
 import whchenyicn.task.TaskList;
 import whchenyicn.task.Task;
 
+/**
+ * A command to remove task from tasklist.
+ */
 public class DeleteCommand extends Command{
     private String s;
+
+    /**
+     * Creates a command to delete the task from taskList.
+     *
+     * @param s User input String after "remove".
+     */
     public DeleteCommand(String s) {
         this.s = s;
     }
