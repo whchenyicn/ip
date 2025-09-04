@@ -1,11 +1,12 @@
 package whchenyicn.command;
 
 import java.io.IOException;
+
+import whchenyicn.exceptions.WhchenyicnException;
+import whchenyicn.task.Task;
+import whchenyicn.task.TaskList;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
-import whchenyicn.exceptions.WhchenyicnException;
-import whchenyicn.task.TaskList;
-import whchenyicn.task.Task;
 
 /**
  * A command to remove task from tasklist.
@@ -40,7 +41,8 @@ public class DeleteCommand extends Command {
             throw new WhchenyicnException("Index must be a number");
         }
         if (i < 1 || i > tlist.size()) {
-            throw new WhchenyicnException("Invalid Index, please ensure the index is within range 1 to " + tlist.size());
+            throw new WhchenyicnException(
+                    "Invalid Index, please ensure the index is within range 1 to " + tlist.size());
         }
 
         Task remove = tlist.remove(i - 1);

@@ -1,9 +1,9 @@
 package whchenyicn.command;
 
-import whchenyicn.ui.Storage;
-import whchenyicn.ui.Ui;
 import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.task.TaskList;
+import whchenyicn.ui.Storage;
+import whchenyicn.ui.Ui;
 
 /**
  * A command class with execute function.
@@ -36,7 +36,7 @@ public abstract class Command {
      * @throws WhchenyicnException Throws error if list is full.
      */
     public void checkFull(TaskList tlist) throws WhchenyicnException {
-        if (tlist.size() >=100) {
+        if (tlist.size() >= 100) {
             throw new WhchenyicnException("List is full, max 100");
         }
     }

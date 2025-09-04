@@ -1,11 +1,12 @@
 package whchenyicn.command;
 
 import java.io.IOException;
+
+import whchenyicn.exceptions.WhchenyicnException;
+import whchenyicn.task.Event;
+import whchenyicn.task.TaskList;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
-import whchenyicn.exceptions.WhchenyicnException;
-import whchenyicn.task.TaskList;
-import whchenyicn.task.Event;
 
 /**
  * A command to add an event task to tasklist.

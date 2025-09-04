@@ -1,10 +1,11 @@
 package whchenyicn.command;
 
 import java.io.IOException;
-import whchenyicn.ui.Storage;
-import whchenyicn.ui.Ui;
+
 import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.task.TaskList;
+import whchenyicn.ui.Storage;
+import whchenyicn.ui.Ui;
 
 /**
  * A command to mark a task in the list as done.
@@ -38,7 +39,8 @@ public class MarkCommand extends Command {
             throw new WhchenyicnException("Index must be a number");
         }
         if (i < 1 || i > tlist.size()) {
-            throw new WhchenyicnException("Invalid Index, please ensure the index is within range 1 to " + tlist.size());
+            throw new WhchenyicnException(
+                    "Invalid Index, please ensure the index is within range 1 to " + tlist.size());
         }
         tlist.get(i - 1).markDone();
         ui.printMarked(tlist, i);

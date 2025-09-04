@@ -1,8 +1,8 @@
 package whchenyicn.command;
 
+import whchenyicn.task.TaskList;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
-import whchenyicn.task.TaskList;
 
 /**
  * A command to terminate the bot.
