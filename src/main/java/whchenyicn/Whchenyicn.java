@@ -15,42 +15,42 @@ public class Whchenyicn {
     private TaskList tlist = new TaskList(100);
     private Storage storage = new Storage();
     private static Ui ui = new Ui();
+    private boolean isExit = false;
 
     /**
      * Initializes application state.
      * Prints welcome message, load tasks from storage, show loaded tasks.
      */
-    private void start() {
-        ui.printWelcome();
+    public String start() {
+        String str = "";
+        str += ui.printWelcome() + "\n";
         TaskList load = storage.load();
         if (!load.isEmpty()) {
             tlist.clear();
             tlist.addAll(load.asList());
-            ui.printLoad(tlist);
+            str += ui.printLoad(tlist);
         }
-    }
-    /**
-     * Runs the loop that reads line of user input.
-     * Parses input into command and executes command.
-     * Catches errors and prints message.
-     */
-    public void run() {
-        start();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String s = ui.readCommand();
-                Command c = Parser.parse(s);
-                c.execute(tlist, ui, storage);
-                isExit = c.isExit();
-            } catch (WhchenyicnException e){
-                ui.printError(e.getMessage());
-            }
-        }
+
+        return str;
     }
 
-    public static void main(String[] args) {
-        new Whchenyicn().run();
+    public String getResponse(String userInput) {
+        String str;
+        start();
+        try {
+            Command c = Parser.parse(userInput);
+            str = c.execute(tlist, ui, storage);
+            if (c.isExit()) {
+                this.isExit = true;
+            }
+        } catch (WhchenyicnException e) {
+            return ui.printError(e.getMessage());
+        }
+        return str;
+    }
+
+    public boolean isExit() {
+        return this.isExit;
     }
 }
 

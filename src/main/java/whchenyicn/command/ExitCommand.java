@@ -1,16 +1,16 @@
 package whchenyicn.command;
 
+import whchenyicn.task.TaskList;
 import whchenyicn.ui.Storage;
 import whchenyicn.ui.Ui;
-import whchenyicn.task.TaskList;
 
 /**
  * A command to terminate the bot.
  */
 public class ExitCommand extends Command {
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) {
-        ui.printBye();
+    public String execute(TaskList tlist, Ui ui, Storage storage) {
+        return ui.printBye();
     }
 
     @Override

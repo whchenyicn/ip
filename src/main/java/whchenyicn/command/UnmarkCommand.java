@@ -1,10 +1,11 @@
 package whchenyicn.command;
 
 import java.io.IOException;
-import whchenyicn.ui.Storage;
-import whchenyicn.ui.Ui;
+
 import whchenyicn.exceptions.WhchenyicnException;
 import whchenyicn.task.TaskList;
+import whchenyicn.ui.Storage;
+import whchenyicn.ui.Ui;
 
 /**
  * A command to mark a task in the list as not done.
@@ -22,7 +23,7 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+    public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         if (s == null || s.isEmpty()) {
             throw new WhchenyicnException("Please provide a task number");
         }
@@ -39,15 +40,16 @@ public class UnmarkCommand extends Command {
         }
 
         if (i < 1 || i > tlist.size()) {
-            throw new WhchenyicnException("Invalid Index, please ensure the index is within range 1 to " + tlist.size());
+            throw new WhchenyicnException(
+                    "Invalid Index, please ensure the index is within range 1 to " + tlist.size());
         }
 
         tlist.get(i - 1).unmark();
-        ui.printUnmarked(tlist, i);
         try {
             storage.save(tlist);
         } catch (IOException e) {
             ui.printError("Failed to save: " + e.getMessage());
         }
+        return ui.printUnmarked(tlist, i);
     }
 }

@@ -31,11 +31,12 @@ public class Ui {
     /**
      * Prints welcome message.
      */
-    public void printWelcome() {
+    public String printWelcome() {
         System.out.println(hline);
-        System.out.println("Hello! I'm whchenyicn.whchenyicn");
+        System.out.println("Hello! I'm whchenyicn");
         System.out.println("What can I do for you?");
         System.out.println(hline);
+        return(hline + "\nHello! I'm whchenyicn\n" + "What can I do for you?\n" + hline);
     }
 
     /**
@@ -43,10 +44,11 @@ public class Ui {
      *
      * @param tlist List of tasks loaded and to be printed.
      */
-    public void printLoad(TaskList tlist) {
+    public String printLoad(TaskList tlist) {
         System.out.println(hline);
         System.out.println("Loaded " + tlist.size() + " tasks from list");
         System.out.println(hline);
+        return(hline + "\nLoaded " + tlist.size() + " tasks from list\n" + hline);
     }
 
     /**
@@ -54,10 +56,11 @@ public class Ui {
      *
      * @param msg Error msg to be printed.
      */
-    public void printError(String msg) {
+    public String printError(String msg) {
         System.out.println(hline);
         System.out.println(msg);
         System.out.println(hline);
+        return(hline + "\n" + msg + "\n" + hline);
     }
 
     /**
@@ -66,11 +69,13 @@ public class Ui {
      * @param tlist List of tasks.
      * @param i Index of task to be marked.
      */
-    public void printMarked(TaskList tlist, int i) {
+    public String printMarked(TaskList tlist, int i) {
         System.out.println(hline);
         System.out.println("Nice! I've marked this whchenyicn.task as done:");
         System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
+        return(hline + "Nice! I've marked this whchenyicn.task as done:\n" +
+                tlist.get(i - 1).toString() + "\n" + hline);
     }
 
     /**
@@ -79,11 +84,13 @@ public class Ui {
      * @param tlist List of tasks.
      * @param i Index of task to be unmarked.
      */
-    public void printUnmarked(TaskList tlist, int i) {
+    public String printUnmarked(TaskList tlist, int i) {
         System.out.println(hline);
         System.out.println("OK, I've marked this whchenyicn.task as not done yet:");
         System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
+        return(hline + "OK, I've marked this whchenyicn.task as not done yet: \n" +
+                tlist.get(i - 1).toString() + "\n" + hline);
     }
 
     /**
@@ -91,16 +98,21 @@ public class Ui {
      *
      * @param tlist List of tasks.
      */
-    public void printList(TaskList tlist) {
+    public String printList(TaskList tlist) {
+        String str = hline + "\n";
         System.out.println(hline);
         if (tlist.size() <=0 ) {
             System.out.println("List is empty");
+            str += "List is empty\n";
         }
         for (int i = 0; i < tlist.size(); i++) {
             int number = i + 1;
             System.out.println(number + ". " + tlist.get(i).toString());
+            str += number + ". " + tlist.get(i).toString() + "\n";
         }
+        str += hline;
         System.out.println(hline);
+        return str;
     }
 
     /**
@@ -108,12 +120,18 @@ public class Ui {
      *
      * @param tlist List of tasks.
      */
-    public void printTodoTask(TaskList tlist) {
+    public String printTodoTask(TaskList tlist) {
+        String str = hline + "\nGot it. I've added this task:\n";
         System.out.println(hline);
-        System.out.println("Got it. I've added this whchenyicn.task:");
+        System.out.println("Got it. I've added this task:");
+        str += "  " + tlist.get(tlist.size() - 1).toString() + "\n";
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
+        str += "Now you have " + tlist.size() + " tasks in the list.\n";
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
+        str += hline;
         System.out.println(hline);
+
+        return str;
     }
 
     /**
@@ -121,12 +139,18 @@ public class Ui {
      *
      * @param tlist List of Tasks.
      */
-    public void printDeadlineTask(TaskList tlist) {
+    public String printDeadlineTask(TaskList tlist) {
+        String str = hline + "\nGot it. I've added this task:\n";
         System.out.println(hline);
-        System.out.println("Got it. I've added this whchenyicn.task:");
+        System.out.println("Got it. I've added this task:");
+        str += "  " + tlist.get(tlist.size() - 1).toString() + "\n";
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
+        str += "Now you have " + tlist.size() + " tasks in the list.\n";
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
+        str += hline;
         System.out.println(hline);
+
+        return str;
     }
 
     /**
@@ -134,12 +158,18 @@ public class Ui {
      *
      * @param tlist List of Tasks.
      */
-    public void printEventTask(TaskList tlist) {
+    public String printEventTask(TaskList tlist) {
+        String str = hline + "\nGot it. I've added this task:\n";
         System.out.println(hline);
-        System.out.println("Got it. I've added this whchenyicn.task:");
+        System.out.println("Got it. I've added this task:");
+        str += "  " + tlist.get(tlist.size() - 1).toString() + "\n";
         System.out.println("  " + tlist.get(tlist.size() - 1).toString());
+        str += "Now you have " + tlist.size() + " tasks in the list.\n";
         System.out.println("Now you have " + tlist.size() + " tasks in the list.");
+        str += hline;
         System.out.println(hline);
+
+        return str;
     }
 
     /**
@@ -147,12 +177,17 @@ public class Ui {
      *
      * @param tlist List of Tasks.
      */
-    public void printDelete(TaskList tlist, Task remove) {
+    public String printDelete(TaskList tlist, Task remove) {
+        String str = hline + "\n" + "This task has been removed \n";
         System.out.println(hline);
-        System.out.println("This whchenyicn.task has been removed");
+        System.out.println("This task has been removed");
+        str += "  " + remove.toString() + "\n";
         System.out.println("  " + remove.toString());
+        str += tlist.size() + " tasks left in the list.\n" + hline;
         System.out.println(tlist.size() + " tasks left in the list.");
         System.out.println(hline);
+
+        return str;
     }
 
     /**
@@ -160,25 +195,32 @@ public class Ui {
      *
      * @param matchList List of tasks containing keyword.
      */
-    public void printFind(TaskList matchList) {
+    public String printFind(TaskList matchList) {
+        String str = hline + "\n";
         System.out.println(hline);
         if (matchList.isEmpty()) {
             System.out.println("No matching tasks found.");
+            str += "No matching tasks found.\n";
         }
         else {
+            str += "Here are the matching tasks in your list:\n";
             System.out.println("Here are the matching tasks in your list:");
             for (int i = 0; i < matchList.size(); i++) {
+                str += (i + 1) + matchList.get(i).toString() + "\n";
                 System.out.printf("%d.%s%n", i + 1, matchList.get(i).toString());
             }
         }
         System.out.println(hline);
+        str += hline;
+        return str;
     }
 
     /**
      * Prints exit message.
      */
-    public void printBye() {
+    public String printBye() {
         System.out.println("Bye! Hope to see you again soon!");
         System.out.println(hline);
+        return hline + "Bye! Hope to see you again soon!\n" + hline;
     }
 }
