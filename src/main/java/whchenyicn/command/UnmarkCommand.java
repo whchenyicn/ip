@@ -23,7 +23,7 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+    public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         if (s == null || s.isEmpty()) {
             throw new WhchenyicnException("Please provide a task number");
         }
@@ -45,11 +45,11 @@ public class UnmarkCommand extends Command {
         }
 
         tlist.get(i - 1).unmark();
-        ui.printUnmarked(tlist, i);
         try {
             storage.save(tlist);
         } catch (IOException e) {
             ui.printError("Failed to save: " + e.getMessage());
         }
+        return ui.printUnmarked(tlist, i);
     }
 }

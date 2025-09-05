@@ -24,17 +24,18 @@ public class AddToDoCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+    public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         checkFull(tlist);
 
         tlist.add(new ToDo(s));
-        ui.printTodoTask(tlist);
 
         try {
             storage.save(tlist);
         } catch (IOException e) {
             ui.printError("Failed to save: " + e.getMessage());
         }
+
+        return ui.printTodoTask(tlist);
     }
 
 }

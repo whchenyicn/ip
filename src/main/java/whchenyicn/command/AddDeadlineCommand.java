@@ -25,7 +25,7 @@ public class AddDeadlineCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+    public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         checkFull(tlist);
 
         if (s == null || s.isEmpty()) {
@@ -55,11 +55,12 @@ public class AddDeadlineCommand extends Command {
             throw new WhchenyicnException("Invalid date. Use yyyy-MM-dd");
         }
 
-        ui.printDeadlineTask(tlist);
         try {
             storage.save(tlist);
         } catch (IOException e) {
             ui.printError("Failed to save: " + e.getMessage());
         }
+
+        return ui.printDeadlineTask(tlist);
     }
 }

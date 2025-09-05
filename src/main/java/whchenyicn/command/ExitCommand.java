@@ -9,8 +9,8 @@ import whchenyicn.ui.Ui;
  */
 public class ExitCommand extends Command {
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) {
-        ui.printBye();
+    public String execute(TaskList tlist, Ui ui, Storage storage) {
+        return ui.printBye();
     }
 
     @Override

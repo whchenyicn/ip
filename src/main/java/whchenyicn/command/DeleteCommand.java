@@ -25,7 +25,7 @@ public class DeleteCommand extends Command {
 
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+    public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         if (tlist.size() == 0) {
             throw new WhchenyicnException("List is empty! You can't delete anything");
         }
@@ -46,11 +46,11 @@ public class DeleteCommand extends Command {
         }
 
         Task remove = tlist.remove(i - 1);
-        ui.printDelete(tlist, remove);
         try {
             storage.save(tlist);
         } catch (IOException e) {
             ui.printError("Failed to save: " + e.getMessage());
         }
+        return ui.printDelete(tlist, remove);
     }
 }

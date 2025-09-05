@@ -23,7 +23,7 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+    public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         if (s == null || s.isEmpty()) {
             throw new WhchenyicnException("Please provide a task number");
         }
@@ -43,11 +43,12 @@ public class MarkCommand extends Command {
                     "Invalid Index, please ensure the index is within range 1 to " + tlist.size());
         }
         tlist.get(i - 1).markDone();
-        ui.printMarked(tlist, i);
         try {
             storage.save(tlist);
         } catch (IOException e) {
             ui.printError("Failed to save: " + e.getMessage());
+
         }
+        return ui.printMarked(tlist, i);
     }
 }

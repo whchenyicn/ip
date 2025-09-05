@@ -24,7 +24,7 @@ public class AddEventCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+    public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         checkFull(tlist);
 
         if (s == null || s.isEmpty()) {
@@ -55,12 +55,13 @@ public class AddEventCommand extends Command {
         }
 
         tlist.add(new Event(desc, from, to));
-        ui.printEventTask(tlist);
 
         try {
             storage.save(tlist);
         } catch (IOException e) {
             ui.printError("Failed to save: " + e.getMessage());
         }
+
+        return ui.printEventTask(tlist);
     }
 }

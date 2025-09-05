@@ -18,7 +18,7 @@ public abstract class Command {
      * @param storage Storage to store data from interaction.
      * @throws WhchenyicnException Throws error if encounter any issue.
      */
-    public abstract void execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException;
+    public abstract String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException;
 
     /**
      * Returns whether application is terminating.
