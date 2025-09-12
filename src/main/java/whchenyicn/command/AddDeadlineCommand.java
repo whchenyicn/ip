@@ -27,6 +27,7 @@ public class AddDeadlineCommand extends Command {
     @Override
     public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         checkFull(tlist);
+        assertUi (tlist, ui, storage);
 
         if (s == null || s.isEmpty()) {
             throw new WhchenyicnException("whchenyicn.task cannot be empty, use deadline <desc> /by <when>");
@@ -40,6 +41,9 @@ public class AddDeadlineCommand extends Command {
 
         String desc = s.substring(0, b).trim();
         String by = s.substring(b + 3).trim().replaceFirst("^:", "").trim();
+
+        assert !desc.isEmpty() : "Deadline description should not be empty here";
+        assert !by.isEmpty() : "Deadline 'by' date should not be empty here";
 
         if (desc.isEmpty()) {
             throw new WhchenyicnException("Description cannot be empty 'deadline <desc> /by <when>' ");

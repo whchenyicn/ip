@@ -9,7 +9,8 @@ import whchenyicn.ui.Ui;
  */
 public class ListCommand extends Command {
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
-        return ui.printList(tasks);
+    public String execute(TaskList tlist, Ui ui, Storage storage) {
+        assertUi (tlist, ui, storage);
+        return ui.printList(tlist);
     }
 }
