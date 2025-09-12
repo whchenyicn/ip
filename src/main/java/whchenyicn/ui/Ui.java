@@ -105,12 +105,15 @@ public class Ui {
             System.out.println("List is empty");
             str += "List is empty\n";
         }
-        for (int i = 0; i < tlist.size(); i++) {
-            int number = i + 1;
-            System.out.println(number + ". " + tlist.get(i).toString());
-            str += number + ". " + tlist.get(i).toString() + "\n";
-        }
+
+        String tasks = tlist.asList().stream()
+                .map(task -> task.toString())
+                .reduce("", (a, b) -> a + "\n" + b);
+
+        str += tasks + "\n";
         str += hline;
+
+        System.out.println(tasks);
         System.out.println(hline);
         return str;
     }
@@ -205,10 +208,12 @@ public class Ui {
         else {
             str += "Here are the matching tasks in your list:\n";
             System.out.println("Here are the matching tasks in your list:");
-            for (int i = 0; i < matchList.size(); i++) {
-                str += (i + 1) + matchList.get(i).toString() + "\n";
-                System.out.printf("%d.%s%n", i + 1, matchList.get(i).toString());
-            }
+            String tasks = matchList.asList().stream()
+                    .map(Task::toString)
+                    .reduce((a, b) -> a + "\n" + b)
+                    .orElse("");
+
+            str += tasks + "\n";
         }
         System.out.println(hline);
         str += hline;
