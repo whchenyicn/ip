@@ -26,6 +26,7 @@ public class AddToDoCommand extends Command {
     @Override
     public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
         checkFull(tlist);
+        assertUi (tlist, ui, storage);
 
         tlist.add(new ToDo(s));
 

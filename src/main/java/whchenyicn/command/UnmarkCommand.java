@@ -24,6 +24,8 @@ public class UnmarkCommand extends Command {
 
     @Override
     public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+        assertUi (tlist, ui, storage);
+
         if (s == null || s.isEmpty()) {
             throw new WhchenyicnException("Please provide a task number");
         }

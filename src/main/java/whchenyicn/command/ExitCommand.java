@@ -10,6 +10,7 @@ import whchenyicn.ui.Ui;
 public class ExitCommand extends Command {
     @Override
     public String execute(TaskList tlist, Ui ui, Storage storage) {
+        assertUi (tlist, ui, storage);
         return ui.printBye();
     }
 
