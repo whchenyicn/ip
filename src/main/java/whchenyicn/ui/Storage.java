@@ -12,12 +12,14 @@ import java.util.List;
 
 public class Storage {
     private Path file;
+    private static final String DATA_DIR    = "data";
+    private static final String DEFAULT_FILE = "whchenyicn.txt";
 
     /**
      * extracts data from whchenyicn.txt
      */
     public Storage() {
-        this(Paths.get("data", "whchenyicn.txt"));
+        this(Paths.get(DATA_DIR, DEFAULT_FILE));
     }
 
     public Storage(Path file) {
