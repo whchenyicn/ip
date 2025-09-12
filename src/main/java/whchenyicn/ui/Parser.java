@@ -51,6 +51,9 @@ public class Parser {
         String command = getCommand(input);
         String arg = getArg(input);
 
+        assert command != null : "Command string should never be null";
+        assert arg != null : "Arg string should never be null";
+
         switch (command.toLowerCase()) {
 
         case "bye":

@@ -26,6 +26,8 @@ public class DeleteCommand extends Command {
 
     @Override
     public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+        assertUi (tlist, ui, storage);
+
         if (tlist.size() == 0) {
             throw new WhchenyicnException("List is empty! You can't delete anything");
         }
@@ -35,11 +37,14 @@ public class DeleteCommand extends Command {
         }
 
         int i;
+
         try {
             i = Integer.parseInt(s.trim());
+            assert i >= 1 && i <= tlist.size() : "Index must be within range 1.." + tlist.size();
         } catch (NumberFormatException e) {
             throw new WhchenyicnException("Index must be a number");
         }
+
         if (i < 1 || i > tlist.size()) {
             throw new WhchenyicnException(
                     "Invalid Index, please ensure the index is within range 1 to " + tlist.size());
