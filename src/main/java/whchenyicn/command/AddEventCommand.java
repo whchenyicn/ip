@@ -13,6 +13,8 @@ import whchenyicn.ui.Ui;
  */
 public class AddEventCommand extends Command {
     private String s;
+    private static final String FROM_TOKEN = "/from";
+    private static final String TO_TOKEN   = "/to";
 
     /**
      * Creates a command to add event task.
@@ -32,8 +34,8 @@ public class AddEventCommand extends Command {
             throw new WhchenyicnException("Cannot be empty, event <desc> /from <start> /to <end>");
         }
 
-        int f = s.indexOf("/from");
-        int t = s.indexOf("/to");
+        int f = s.indexOf(FROM_TOKEN);
+        int t = s.indexOf(TO_TOKEN);
         if (f <= 0 || t <= f) {
             throw new WhchenyicnException("event <desc> /from <start> /to <end>");
         }
