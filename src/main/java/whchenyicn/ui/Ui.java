@@ -9,7 +9,7 @@ import java.util.Scanner;
  * Ui class to print messsages for usre interaction.
  */
 public class Ui {
-    private static String hline = "__________________________________________________";
+    private static final String hline = "__________________________________________________";
     private Scanner sc;
 
     /**

@@ -14,6 +14,7 @@ import whchenyicn.ui.Ui;
 public class AddDeadlineCommand extends Command {
 
     private String s;
+    protected static final String BY_TOKEN = "/by";
 
     /**
      * Creates a Command to Add Deadline Task.
@@ -32,14 +33,15 @@ public class AddDeadlineCommand extends Command {
             throw new WhchenyicnException("whchenyicn.task cannot be empty, use deadline <desc> /by <when>");
         }
 
-        int b = s.indexOf("/by");
+        int b = s.indexOf(BY_TOKEN);
 
         if (b < 0) {
             throw new WhchenyicnException("Missing '/by', use deadline <desc> /by <when>");
         }
 
         String desc = s.substring(0, b).trim();
-        String by = s.substring(b + 3).trim().replaceFirst("^:", "").trim();
+        String rest = s.substring(b + BY_TOKEN.length()).trim();
+        String by = rest.replaceFirst("^:", "").trim();
 
         if (desc.isEmpty()) {
             throw new WhchenyicnException("Description cannot be empty 'deadline <desc> /by <when>' ");

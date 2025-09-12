@@ -9,6 +9,7 @@ import whchenyicn.ui.Ui;
  * A command class with execute function.
  */
 public abstract class Command {
+    private static final int MAX_TASKS = 100;
 
     /**
      * Executes the command using provided fields.
@@ -36,7 +37,7 @@ public abstract class Command {
      * @throws WhchenyicnException Throws error if list is full.
      */
     public void checkFull(TaskList tlist) throws WhchenyicnException {
-        if (tlist.size() >= 100) {
+        if (tlist.size() >= MAX_TASKS) {
             throw new WhchenyicnException("List is full, max 100");
         }
     }
