@@ -41,4 +41,10 @@ public abstract class Command {
             throw new WhchenyicnException("List is full, max 100");
         }
     }
+
+    protected void assertUi(TaskList tlist, Ui ui, Storage storage) {
+        assert tlist != null : "TaskList dependency must be provided";
+        assert ui != null : "Ui dependency must be provided";
+        assert storage != null : "Storage dependency must be provided";
+    }
 }

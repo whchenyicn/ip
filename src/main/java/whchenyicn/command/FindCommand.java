@@ -22,6 +22,7 @@ public class FindCommand extends Command {
 
     @Override
     public String execute(TaskList tlist, Ui ui, Storage storage) {
+        assertUi (tlist, ui, storage);
         String k = keyword.trim().toLowerCase();
         TaskList matchList = new TaskList();
         for (int i = 0; i < tlist.size(); i++) {

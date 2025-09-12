@@ -70,6 +70,8 @@ public class Ui {
      * @param i Index of task to be marked.
      */
     public String printMarked(TaskList tlist, int i) {
+        assert i >= 1 && i <= tlist.size() : "i must be within 1..size";
+
         System.out.println(hline);
         System.out.println("Nice! I've marked this whchenyicn.task as done:");
         System.out.println(tlist.get(i - 1).toString());
@@ -85,6 +87,8 @@ public class Ui {
      * @param i Index of task to be unmarked.
      */
     public String printUnmarked(TaskList tlist, int i) {
+        assert i >= 1 && i <= tlist.size() : "i must be within 1..size";
+
         System.out.println(hline);
         System.out.println("OK, I've marked this whchenyicn.task as not done yet:");
         System.out.println(tlist.get(i - 1).toString());
