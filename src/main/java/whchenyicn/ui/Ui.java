@@ -58,9 +58,9 @@ public class Ui {
      */
     public String printError(String msg) {
         System.out.println(hline);
-        System.out.println(msg);
+        System.out.println("[ERROR] " + msg);
         System.out.println(hline);
-        return(hline + "\n" + msg + "\n" + hline);
+        return (hline + "\n[ERROR] " + msg + "\n" + hline);
     }
 
     /**

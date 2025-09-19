@@ -45,10 +45,16 @@ public class MainWindow extends AnchorPane {
     private void handleUserInput() {
         String input = userInput.getText();
         String response = whchenyicn.getResponse(input);
-        dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
-                DialogBox.getWhchenyicnDialog(response, dukeImage)
+        dialogContainer.getChildren().add(DialogBox.getUserDialog(input, userImage));
+
+        //AI-assisted to differentiate error msg from normal msg
+        boolean isError = response.contains("[ERROR]");
+        dialogContainer.getChildren().add(
+                isError
+                        ? DialogBox.getErrorDialog(response, dukeImage)
+                        : DialogBox.getWhchenyicnDialog(response, dukeImage)
         );
+
         userInput.clear();
         if (whchenyicn.isExit()) {
             userInput.setDisable(true);

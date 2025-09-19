@@ -44,8 +44,7 @@ public class Storage {
                 Task t = parse(line);
                 if (t != null) taskList.add(t);
             }
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("Failed to read saved files: " + e.getMessage());
         }
         return taskList;
@@ -91,8 +90,7 @@ public class Storage {
             try {
                 t = new Deadline(desc, parts[3].trim());
                 break;
-            }
-            catch (IllegalArgumentException e) {
+            } catch (IllegalArgumentException e) {
                 return null;
             }
         case "E":
@@ -107,9 +105,7 @@ public class Storage {
 
         if (isDone) {
             t.markDone();
-        }
-
-        else {
+        } else {
             t.unmark();
         }
 
