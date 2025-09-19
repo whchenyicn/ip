@@ -74,6 +74,8 @@ public class Parser {
             return new AddEventCommand(arg);
         case "find":
             return new FindCommand(arg);
+        case "reminder":
+            return new ReminderCommand(arg);
         default:
             throw new WhchenyicnException("Invalid whchenyicn.command: " + command);
         }

@@ -232,4 +232,18 @@ public class Ui {
         System.out.println(hline);
         return hline + "Bye! Hope to see you again soon!\n" + hline;
     }
+
+    public String printReminders(TaskList reminders, int days) {
+
+        if (reminders.isEmpty()) {
+            return hline + "\nNo upcoming tasks within " + days + " days.\n" + hline;
+        }
+
+        String tasks = reminders.asList().stream()
+                .map(Task::toString)
+                .reduce((a, b) -> a + "\n" + b)
+                .orElse("");
+        return hline + "\nHere are tasks due within " + days + " days:\n"
+                + tasks + "\n" + hline;
+    }
 }
