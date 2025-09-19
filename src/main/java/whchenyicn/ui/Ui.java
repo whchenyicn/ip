@@ -76,7 +76,7 @@ public class Ui {
         System.out.println("Nice! I've marked this whchenyicn.task as done:");
         System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
-        return(hline + "Nice! I've marked this whchenyicn.task as done:\n" +
+        return(hline + "\nNice! I've marked this whchenyicn.task as done:\n" +
                 tlist.get(i - 1).toString() + "\n" + hline);
     }
 
@@ -93,7 +93,7 @@ public class Ui {
         System.out.println("OK, I've marked this whchenyicn.task as not done yet:");
         System.out.println(tlist.get(i - 1).toString());
         System.out.println(hline);
-        return(hline + "OK, I've marked this whchenyicn.task as not done yet: \n" +
+        return(hline + "\nOK, I've marked this whchenyicn.task as not done yet: \n" +
                 tlist.get(i - 1).toString() + "\n" + hline);
     }
 
@@ -230,7 +230,7 @@ public class Ui {
     public String printBye() {
         System.out.println("Bye! Hope to see you again soon!");
         System.out.println(hline);
-        return hline + "Bye! Hope to see you again soon!\n" + hline;
+        return hline + "\nBye! Hope to see you again soon!\n" + hline;
     }
 
     public String printReminders(TaskList reminders, int days) {

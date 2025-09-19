@@ -19,6 +19,8 @@ public class Main extends Application {
             AnchorPane ap = fxmlLoader.load();
             Scene scene = new Scene(ap);
             stage.setScene(scene);
+            stage.setTitle("Whchenyicn");
+            stage.setResizable(true);
             fxmlLoader.<MainWindow>getController().setDuke(whchenyicn);  // inject the Duke instance
             stage.show();
         } catch (IOException e) {

@@ -1,2 +1,0 @@
-D | 0 | submit report | 2025-10-01
-E | 0 | project meeting | 2pm | 4pm
