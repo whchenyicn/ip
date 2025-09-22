@@ -25,6 +25,11 @@ public class AddToDoCommand extends Command {
 
     @Override
     public String execute(TaskList tlist, Ui ui, Storage storage) throws WhchenyicnException {
+
+        if (s == null || s.trim().isEmpty()) {
+            throw new WhchenyicnException("The description of a todo cannot be empty.");
+        }
+
         checkFull(tlist);
         assertUi (tlist, ui, storage);
 

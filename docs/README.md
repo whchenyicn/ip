@@ -14,20 +14,20 @@ It runs on Java 17 and stores your tasks automatically between sessions.
 5. You can now start using Whchenyicn by typing commands (see *Feature Overview* for command details).
 
 ---
-
+    
 ## ✨ Feature Overview
 
 Whchenyicn supports the following features:
 
-- [Add Todos](#-adding-todos) — `todo <description>`
-- [Add Deadlines](#-adding-deadlines) — `deadline <description> /by YYYY-MM-DD`
-- [Add Events](#-adding-events) — `event <description> /at <date/time>`
-- [List Tasks](#-listing-tasks) — `list`
-- [Mark and Unmark Tasks](#-marking-and-unmarking-tasks) — `mark <n>`, `unmark <n>`
-- [Delete Tasks](#-deleting-tasks) — `delete <n>`
-- [Find Tasks](#-finding-tasks) — `find <keyword>`
-- [Reminders](#-reminders) — `reminder <days>`
-- [Exit](#-exiting) — `bye`
+- [Add Todos](#adding-todos) — `todo <description>`
+- [Add Deadlines](#adding-deadlines) — `deadline <description> /by YYYY-MM-DD`
+- [Add Events](#adding-events) — `event <description> /at <date/time>`
+- [List Tasks](#listing-tasks) — `list`
+- [Mark and Unmark Tasks](#marking-and-unmarking-tasks) — `mark <n>`, `unmark <n>`
+- [Delete Tasks](#deleting-tasks) — `delete <n>`
+- [Find Tasks](#finding-tasks) — `find <keyword>`
+- [Reminders](#reminders) — `reminder <days>`
+- [Exit](#exiting) — `bye`
 
 ## Adding todos
 
@@ -148,9 +148,9 @@ Bye! Hope to see you again soon!
 
 Whchenyicn handles common errors gracefully:
 
-- **Unknown command** → Shows: “I’m sorry, but I don’t know that command.”
+- **Unknown command** → Shows: “Invalid Command”
 - **Missing description** (e.g. `todo `) → Asks you to provide a description.
 - **Invalid or missing date** → Reminds you to use the correct format (`YYYY-MM-DD` or valid time).
 - **Task number out of range** → Tells you the number must be between 1 and the size of your list.
 - **Storage errors** → Creates a new save file if the old one is missing or corrupted.
-- **Empty keyword / invalid reminder** → Prompts you to provide a keyword or a valid number of days.  
+- **Empty keyword** → Prompts you to provide a keyword or a valid number of days.  
