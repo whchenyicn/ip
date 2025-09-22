@@ -42,6 +42,13 @@ public abstract class Command {
         }
     }
 
+    /**
+     * Asserts tlist, ui and storage to not be empty,
+     *
+     * @param tlist List to be checked.
+     * @param ui Ui to be checked.
+     * @param storage Storage to be checked.
+     */
     protected void assertUi(TaskList tlist, Ui ui, Storage storage) {
         assert tlist != null : "TaskList dependency must be provided";
         assert ui != null : "Ui dependency must be provided";
