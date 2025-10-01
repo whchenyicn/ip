@@ -21,7 +21,7 @@ Whchenyicn supports the following features:
 
 - [Add Todos](#adding-todos) — `todo <description>`
 - [Add Deadlines](#adding-deadlines) — `deadline <description> /by YYYY-MM-DD`
-- [Add Events](#adding-events) — `event <description> /at <date/time>`
+- [Add Events](#adding-events) — `event <description> /from <date/time> /to <date/time>`
 - [List Tasks](#listing-tasks) — `list`
 - [Mark and Unmark Tasks](#marking-and-unmarking-tasks) — `mark <n>`, `unmark <n>`
 - [Delete Tasks](#deleting-tasks) — `delete <n>`
@@ -60,12 +60,12 @@ Now you have 2 tasks in the list.
 
 Adds a task with a description and an event time.
 
-**Example:** `event project meeting /at Monday 2pm`
+**Example:** `event project meeting /from Monday 2pm /to Tuesday 2pm`
 
 **Expected outcome:**
 ```
 Got it. I've added this task:
-[E][ ] project meeting (at: Monday 2pm)
+[E][ ] project meeting (from: Monday 2pm to: Tuesday 2pm)
 Now you have 3 tasks in the list.
 ```
 ---
